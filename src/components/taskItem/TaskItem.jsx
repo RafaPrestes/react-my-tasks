@@ -4,7 +4,7 @@ import { CgClose } from 'react-icons/cg'
 import { CgInfo } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
 
-const TaskItem = ({ task, handleTaskClick, handleTaskRemove }) => {
+const TaskItem = ({ task, handleTaskClick, handleTaskRemove}) => {
   const navigate = useNavigate();
 
   return (

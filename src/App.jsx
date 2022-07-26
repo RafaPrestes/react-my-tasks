@@ -11,18 +11,8 @@ import TaskDetails from "./components/taskDetails/TaskDetails";
 import "./App.css";
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: 'Estudar Programação',
-      completed: false
-    },
-    {
-      id: 2,
-      title: 'Jogar Basquete',
-      completed: true
-    }
-  ]);
+  const data = localStorage.getItem("tasksItens")
+  const [tasks, setTasks] = useState(data ? JSON.parse(data) : [])
 
 
 	const handleTaskClick = (taskId) => {
@@ -33,6 +23,7 @@ const App = () => {
 		});
 
 		setTasks(newTasks);
+    localStorage.setItem("tasksItens", JSON.stringify(newTasks))
 	};
 
 	const handleTaskAdd  = (taskTitle) => {
@@ -46,12 +37,14 @@ const App = () => {
 		];
 
 		setTasks(newTasks);
+
+    localStorage.setItem("tasksItens", JSON.stringify(newTasks))
 	};
 
 	const handleTaskRemove  = (taskId) => {
 		const newTasks = tasks.filter((task) => task.id !== taskId);
-
-		setTasks(newTasks);
+    setTasks(newTasks);
+    localStorage.setItem("tasksItens", JSON.stringify(newTasks));
 	};
 
 	return (

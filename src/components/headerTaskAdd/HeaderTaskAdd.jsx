@@ -6,12 +6,16 @@ const HeaderTask = ({ handleTaskAdd }) => {
     const [inputData, setInputData] = useState('')
 
     const handleInputChange = (e) => {
-        setInputData(e.target.value)
+        setInputData(e.target.value);    
     }
 
     const handleAddTaskClick = () => {
-        handleTaskAdd(inputData)
-        setInputData("")
+        if (inputData == '') {
+            alert("Insira uma tarefa!")
+        } else {
+            handleTaskAdd(inputData)    
+            setInputData("")
+        }       
     }
 
   return (
